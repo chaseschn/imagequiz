@@ -57,38 +57,123 @@
         </div>
     </nav>
 
-    <div class="container bg-info">
-        <h1 class="text-center">Latest Picks</h1>
-        <div class="card-deck bg-blue">
-
-            <div class="card col-sm-3" style="width:375px">
-                <img class="card-img-top img-thumbnail" src="https://giftsear.ch/image/square/sloth-loves-cat-t-shirt.jpg" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">Sloth Loves Cat</h4>
-                    <p class="card-text">Of course two of the cutest animals on the planet must like each other and you can show their love with this adorable T-shirt!</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-
-            <div class="card col-sm-3" style="width:375px ">
-                <img class="card-img-top img-thumbnail" src="https://giftsear.ch/image/square/men-s-traveler-dopkit.jpg" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">Men's Travel Kit</h4>
-                    <p class="card-text">A compact high quality toiletry bag with handles and pockets, ready to be packed and thrown in the bag as you prepare to go on an adventure.</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-
-            <div class="card col-sm-3" style="width: 375px">
-                <img class="card-img-top img-thumbnail" src="https://giftsear.ch/image/square/narwhal-usb-foot-warmers.jpg" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">The unicorn of the sea, the narwhal probably can't keep a human away from hypothermia, but these narwhal slippers *will* keep your feet warm and toasty.</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-        </div>
+    <div id='flowersDiv' style="overflow-x:auto">
+        <table>
+            <tr>
+                <td>
+                    <figure>
+                        <img id="image1" src=''>
+                        <figcaption id="flower1">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image2" src=''>
+                        <figcaption id="flower2">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image3" src=''>
+                        <figcaption id="flower3">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image4" src=''>
+                        <figcaption id="flower4">Caption goes here</figcaption>
+                    </figure>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <figure>
+                        <img id="image5" src=''>
+                        <figcaption id="flower5">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image6" src=''>
+                        <figcaption id="flower6">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image7" src=''>
+                        <figcaption id="flower7">Caption goes here</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="image8" src=''>
+                        <figcaption id="flower8">Caption goes here</figcaption>
+                    </figure>
+                </td>
+            </tr>
+        </table>
     </div>
+    <script>
+        /*
+           Using the array flowers below,
+           display the flowers. Use the div 'flowersDiv'.
+           You should display the flowers in two rows,
+           each row containing 4 flowers.
+           For each flower, you should show the image
+           and under the image display its name.
+        */
+       class Flower {
+           constructor(name, pictureName) {
+               this.name = name;
+               this.picture = pictureName;
+           }
+           nam(){
+               return this.name;
+           }
+           pic(){
+               return this.picture;
+           }
+       }
+       let daffodil = new Flower('Daffodil', 'https://habahram.blob.core.windows.net/flowers/daffodil.jpg');
+       let cherryblossom = new Flower('Cherry blossom', 'https://habahram.blob.core.windows.net/flowers/cherryblossom.jpg');
+       let lily = new Flower('Lily', 'https://habahram.blob.core.windows.net/flowers/lily.jpg');
+       let daisy = new Flower('Daisy', 'https://habahram.blob.core.windows.net/flowers/daisy.jpg');
+       let sunflower = new Flower('Sunflower', 'https://habahram.blob.core.windows.net/flowers/sunflower.jpg');
+       let tulip = new Flower('Tulip', 'https://habahram.blob.core.windows.net/flowers/tulip.jpg');
+       let rose = new Flower('Rose', 'https://habahram.blob.core.windows.net/flowers/rose.jpg');
+       let waterlily = new Flower('Water lily', 'https://habahram.blob.core.windows.net/flowers/waterlily.jpg');
+
+       let flowers = [
+             daffodil,
+             cherryblossom,
+             lily,
+             daisy,
+             sunflower,
+             tulip,
+             rose,
+             waterlily
+       ];
+
+       document.getElementById("flower1").innerHTML = flowers[0].nam();
+       document.getElementById("image1").src = flowers[0].pic();
+
+
+       document.getElementById("flower2").innerHTML = flowers[1].nam();
+       document.getElementById("image2").src = flowers[1].pic();
+
+
+       document.getElementById("flower3").innerHTML = flowers[2].nam();
+       document.getElementById("image3").src = flowers[2].pic();
+
+
+       document.getElementById("flower4").innerHTML = flowers[3].nam();
+       document.getElementById("image4").src = flowers[3].pic();
+
+
+       document.getElementById("flower5").innerHTML = flowers[4].nam();
+       document.getElementById("image5").src = flowers[4].pic();
+
+
+       document.getElementById("flower6").innerHTML = flowers[5].nam();
+       document.getElementById("image6").src = flowers[5].pic();
+
+
+       document.getElementById("flower7").innerHTML = flowers[6].nam();
+       document.getElementById("image7").src = flowers[6].pic();
+
+
+       document.getElementById("flower8").innerHTML = flowers[7].nam();
+       document.getElementById("image8").src = flowers[7].pic();
+
+    </script>
 
 
 
