@@ -113,9 +113,9 @@ let flowers = [
 
 const Home = () => {
   return (
-    <Row gutter={40}>
+    <Row gutter={40} key={ Math.random().toString(36).substr(2, 9) }>
       {(flowers).map(flow =>
-        <Col class="col-sm-4"
+        <Col className="col-sm-4" key={ Math.random().toString(36).substr(2, 9) }
           xs={{ span: 6}} sm={{ span: 4 }} md={{ span: 3 }}
           lg={{ span: 2 }} xl={{ span: 1 }}
         ><img src={flow.picture} width="100%"></img>
