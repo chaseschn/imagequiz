@@ -17,12 +17,6 @@ function App() {
 
         <Row>
           <Col>
-            <Header />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
             <Menu />
           </Col>
         </Row>
@@ -37,12 +31,6 @@ function App() {
           <Route exact path='/home' element={<Home />}>
           </Route>
         </Routes>
-        <Row>
-
-          <Col>
-            <Footer />
-          </Col>
-        </Row>
 
       </Container>
     </HashRouter>
