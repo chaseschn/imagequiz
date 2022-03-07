@@ -11,13 +11,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function App() {
+  const[customer, setCustomer] = useState(undefined);
+  let customerLoggedInHandler = (customerEmail) => {
+    setUsername(customerEmail);
+  }
   return (
     <HashRouter>
       <Container fluid>
 
         <Row>
           <Col>
-            <Menu />
+            <Menu customer={customer} />
           </Col>
         </Row>
 
@@ -26,7 +30,7 @@ function App() {
           </Route>
           <Route exact path='/register' element={<Register />}>
           </Route>
-          <Route exact path='/login' element={<Login />}>
+          <Route exact path='/login' element={<Login customerLoggedIn={customerLoggedInHandler}/>}>
           </Route>
           <Route exact path='/home' element={<Home />}>
           </Route>

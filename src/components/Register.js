@@ -1,11 +1,45 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import local_temp_store from '../data-access_layer/local_temprarily_storage';
+import { getBsProps } from 'react-bootstrap/lib/utils/bootstrapUtils';
 
 const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  let onNameChanged = (e) => {
+    setName(e.target.value);
+  }
+  
+  let onEmailChanged = (e) => {
+    setEmail(e.target.value);
+  }
+  
+  let onPasswordChanged = (e) => {
+    setPassword(e.target.value);
+  }
+
+  let onSubmitHandler = (e) => {
+    e.preventDefault();
+    let found = local_temp_store.customers.find(x =>
+      (x.email.toLowerCase() === email.toLowerCase()) && (x.password === password));
+      if(found) {
+        props.customerLoggedIn(email);
+        navigate('/');
+      } else {
+        alert('The credentials are not valid!');
+      }
+    local_temp_store.customers.push({name: name, email : email, password: password});
+    navigate('/login')
+  }
   return (
-    <Form>
+    <Form onSumbit = {onSubmiteHandler}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
