@@ -1,4 +1,5 @@
 import { HashRouter, Route, Routes} from 'react-router-dom';
+import React, { useState } from 'react';
 import Home from './components/Home.js';
 import Login from './components/Login.js';
 import Header from './components/Header.js';
@@ -13,7 +14,7 @@ import Col from 'react-bootstrap/Col';
 function App() {
   const[customer, setCustomer] = useState(undefined);
   let customerLoggedInHandler = (customerEmail) => {
-    setUsername(customerEmail);
+    setCustomer(customerEmail);
   }
   return (
     <HashRouter>
