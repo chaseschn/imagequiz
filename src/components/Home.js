@@ -10,7 +10,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     let takeTheQuiz = (flowerName) => {
-        navigate('/quiz', {state: {id: flowerName}});
+        navigate('/quiz/' + flowerName);
     }
 
     return (

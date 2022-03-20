@@ -23,11 +23,6 @@ function App() {
       <Container fluid>
         <Row>
           <Col>
-            <Header />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
             <Menu customer={customer} />
           </Col>
         </Row>
@@ -39,7 +34,7 @@ function App() {
           <Route exact path='/login' element={<Login customerLoggedIn={customerLoggedInHandler} />}>
 
           </Route>
-          <Route exact path='/quiz' element={<Quiz />} >
+          <Route exact path='/quiz/:id' element={<Quiz />} >
 
           </Route>
           <Route exact path='/' element={<Home />} >
@@ -47,11 +42,6 @@ function App() {
           </Route>
         </Routes>
 
-        <Row>
-          <Col>
-            <Footer />
-          </Col>
-        </Row>
       </Container>
     </HashRouter>
   );
