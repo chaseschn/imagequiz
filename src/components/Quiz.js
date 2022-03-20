@@ -39,7 +39,7 @@ const Quiz = () => {
         setQuiz(x);
       }
       if(currentQuestionNumber >= 6){
-        window.location.href = "./Home";
+        window.location.href = "#";
       }
     });
 
