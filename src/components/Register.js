@@ -1,96 +1,59 @@
-import React, { useState } from 'react';
+import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import local_temp_store from '../data_access_layer/local_temporarily_storage.js';
+import dataService from '../data_access_layer/local_temporarily_storage';
 
-const Register = (props) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
-  let onNameChanged = (e) => {
-    setName(e.target.value);
-  }
+const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-  let onEmailChanged = (e) => {
-    setEmail(e.target.value);
-  }
+    let onNameChanged = (e) => {
+        setName(e.target.value);
+    }
 
-  let onPasswordChanged = (e) => {
-    setPassword(e.target.value);
-  }
+    let onEmailChanged = (e) => {
+        setEmail(e.target.value);
+    }
 
-  let onSubmitHandler = (e) => {
-    e.preventDefault();
-    let found = local_temp_store.customers.find(x =>
-      (x.email.toLowerCase() === email.toLowerCase()) && (x.password === password));
-      if(found) {
-        props.customerLoggedIn(email);
-        navigate('/');
-      } else {
-        alert('The credentials are not valid!');
-      }
-    local_temp_store.customers.push({name: name, email : email, password: password});
-    navigate('/login')
-  }
+    let onPasswordChanged = (e) => {
+        setPassword(e.target.value);
+    }
 
-  return (
-    <Form onSumbit = {onSubmitHandler}>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
+    let onSubmitHandler = (e) => {
+        dataService.customers.push({name: name, email: email, password: password});
+         navigate('/login');
+    }
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-      </Row>
+    return (
+        <Form onSubmit={onSubmitHandler}>
 
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
-      </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter name" value={name} onChange={onNameChanged}/>
+            </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
-      </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" value={email} onChange={onEmailChanged}/>
+                <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                </Form.Text>
+            </Form.Group>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
-        </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordChanged}/>
+            </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-      </Row>
-
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  );
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+        </Form>
+    );
 }
 
 export default Register;

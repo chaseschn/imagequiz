@@ -1,128 +1,40 @@
+import dataService from "../data_access_layer/local_temporarily_storage";
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-let flowers = [
-    {
-        name: "Acacia",
-        picture: "https://habahram.blob.core.windows.net/flowers/acacia.jpg"
-    },
-    {
-        name: "Alyssum",
-        picture: "https://habahram.blob.core.windows.net/flowers/alyssum.jpg"
-    },
-    {
-        name: "Amaryllis",
-        picture: "https://habahram.blob.core.windows.net/flowers/amaryllis.jpg"
-    },
-    {
-        name: "Aster",
-        picture: "https://habahram.blob.core.windows.net/flowers/aster.jpg"
-    },
-    {
-        name: "Azalea",
-        picture: "https://habahram.blob.core.windows.net/flowers/azalea.jpg"
-    },
-    {
-        name: "Begonia",
-        picture: "https://habahram.blob.core.windows.net/flowers/begonia.jpg"
-    },
-    {
-        name: "Buttercup",
-        picture: "https://habahram.blob.core.windows.net/flowers/buttercup.jpg"
-    },
-    {
-        name: "Calluna",
-        picture: "https://habahram.blob.core.windows.net/flowers/calluna.jpg"
-    },
-    {
-        name: "Camellia",
-        picture: "https://habahram.blob.core.windows.net/flowers/camellia.jpg"
-    },
-    {
-        name: "Cardinal",
-        picture: "https://habahram.blob.core.windows.net/flowers/cardinal.jpg"
-    },
-    {
-        name: "Carnation",
-        picture: "https://habahram.blob.core.windows.net/flowers/carnation.jpg"
-    },
-    {
-        name: "Clover",
-        picture: "https://habahram.blob.core.windows.net/flowers/clover.jpg"
-    },
-    {
-        name: "Crown Imperial",
-        picture: "https://habahram.blob.core.windows.net/flowers/crownimperial.jpg"
-    },
-    {
-        name: "Daffodil",
-        picture: "https://habahram.blob.core.windows.net/flowers/daffodil.jpg"
-    },
-    {
-        name: "Dahlia",
-        picture: "https://habahram.blob.core.windows.net/flowers/dahlia.jpg"
-    },
-    {
-        name: "Daisy",
-        picture: "https://habahram.blob.core.windows.net/flowers/daisy.jpg"
-    },
-    {
-        name: "Gladiolus",
-        picture: "https://habahram.blob.core.windows.net/flowers/gladiolus.jpg"
-    },
-    {
-        name: "Lantana",
-        picture: "https://habahram.blob.core.windows.net/flowers/lantana.jpg"
-    },
-    {
-        name: "Lily",
-        picture: "https://habahram.blob.core.windows.net/flowers/lily.jpg"
-    },
-    {
-        name: "Lotus",
-        picture: "https://habahram.blob.core.windows.net/flowers/lotus.jpg"
-    },
-    {
-        name: "Marigold",
-        picture: "https://habahram.blob.core.windows.net/flowers/Marigold.jpg"
-    },
-    {
-        name: "Orchid",
-        picture: "https://habahram.blob.core.windows.net/flowers/orchid.jpg"
-    },
-    {
-        name: "Primrose",
-        picture: "https://habahram.blob.core.windows.net/flowers/primrose.jpg"
-    },
-    {
-        name: "Sunflower",
-        picture: "https://habahram.blob.core.windows.net/flowers/sunflower.jpg"
-    },
-    {
-        name: "Tickseed",
-        picture: "https://habahram.blob.core.windows.net/flowers/tickseed.jpg"
-    },
-    {
-        name: "Tulip",
-        picture: "https://habahram.blob.core.windows.net/flowers/tulip.jpg"
-    },
-    {
-        name: "Zinnia",
-        picture: "https://habahram.blob.core.windows.net/flowers/zinnia.jpg"
-    }
-];
+import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
-  return (
-    <Row gutter={40} key={ Math.random().toString(36).substr(2, 9) }>
-      {(flowers).map(flow =>
-        <Col className="col-sm-4" key={ Math.random().toString(36).substr(2, 9) }
-          xs={{ span: 6}} sm={{ span: 4 }} md={{ span: 3 }}
-          lg={{ span: 2 }} xl={{ span: 1 }}
-        ><img src={flow.picture} width="100%"></img>
-        <p>{flow.name}</p></Col>
-      )}
-    </Row>
-  );
+    const navigate = useNavigate();
+
+    let takeTheQuiz = (flowerName) => {
+        navigate('/quiz', {state: {id: flowerName}});
+    }
+
+    return (
+        <Container>
+            <Row xs={1} md={3} className="g-4 text-center">
+                {dataService.getFlowers().map((x, index) => (
+                    <Col key={index}>
+                        <Card className="h-100" onClick={() => takeTheQuiz(x.name)}>
+                            <Card.Img variant="top" src={x.picture} />
+                            <Card.Body>
+                                <Card.Title>{x.name}</Card.Title>
+                                <Card.Text>
+
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+
+        </Container>
+
+
+    );
 }
 
 export default Home;
