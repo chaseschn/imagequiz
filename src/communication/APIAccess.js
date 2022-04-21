@@ -1,6 +1,6 @@
 import { flowers } from "../../../imagequiz-backend/temp/flowers";
 
-let backendAddress = 'http://localhost:4002';
+let backendAddress = 'https://chaseschn-imagequiz-api.herokuapp.com/';
 
 let apiAccess = {
     addCustomer: (name, email, password) => {
