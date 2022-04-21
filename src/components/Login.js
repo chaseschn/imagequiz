@@ -2,7 +2,7 @@ import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import dataService from '../data_access_layer/local_temporarily_storage';
+import apiAccess from '../communication/APIAccess';
 
 
 const Login = (props) => {
@@ -23,11 +23,11 @@ const Login = (props) => {
 
     let onSubmitHandler = (e) => {
         e.preventDefault();
-         let found = dataService.customers.find(x =>
+         let found = apiAccess.Login.customers.find(x =>
             (x.email.toLowerCase() === email.toLowerCase()) && (x.password === password));
          if(found) {
              props.customerLoggedIn(email);
-             navigate('/');
+             navigate('/login');
          } else {
              alert('The credentials are not valid!');
          }

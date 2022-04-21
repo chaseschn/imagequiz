@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
 import ListGroup from 'react-bootstrap/ListGroup';
-import dataService from "../data_access_layer/local_temporarily_storage";
+import apiAccess from "../communication/APIAccess";
 import { useEffect, useState } from "react";
 
 
@@ -35,7 +35,7 @@ const Quiz = () => {
     const { id } = useParams();
     useEffect(() => {
       if(!quiz){
-        let x = dataService.getQuiz(id);
+        let x = apiAccess.getQuiz(id);
         setQuiz(x);
       }
       if(currentQuestionNumber >= 6){

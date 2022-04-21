@@ -1,4 +1,4 @@
-import dataService from "../data_access_layer/local_temporarily_storage";
+import apiAccess from "../communication/APIAccess";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <Container>
             <Row xs={1} md={3} className="g-4 text-center">
-                {dataService.getFlowers().map((x, index) => (
+                {apiAccess.getFlowers().map((x, index) => (
                     <Col key={index}>
                         <Card className="h-100" onClick={() => takeTheQuiz(x.name)}>
                             <Card.Img variant="top" src={x.picture} />

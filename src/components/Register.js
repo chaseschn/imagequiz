@@ -25,7 +25,8 @@ const Register = () => {
 
     let onSubmitHandler = (e) => {
         apiAccess.addCustomer(name, email, password);
-         navigate('/login');
+        apiAccess.Login(props);
+        navigate('/login');
     }
 
     return (
