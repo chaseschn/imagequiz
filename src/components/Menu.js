@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 const Menu = (props) => {
+  let google = "http://localhost:4002/auth/google";
     return (
         <Navbar bg="light" expand="lg">
         <Container>
@@ -19,6 +20,7 @@ const Menu = (props) => {
               <>
               <Nav.Link href="#/register">Register</Nav.Link>
               <Nav.Link href="#/login">Login</Nav.Link>
+              <Nav.Link href={google}>Sign In with Google</Nav.Link>
               </>
             }
 
