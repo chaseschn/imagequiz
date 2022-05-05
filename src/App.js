@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
+import FederatedLogin from './components/FederatedLogin';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Menu from './components/Menu';
@@ -35,7 +36,7 @@ function App() {
 
           </Route>
           <Route path ='/google/:username/:name' element={<FederatedLogin provider='google' customerLoggedIn={customerLoggedInHandler}/>}>
-            
+
           </Route>
           <Route exact path='/quiz/:id' element={<Quiz />} >
 
