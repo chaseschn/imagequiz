@@ -1,3 +1,5 @@
+import Spinner from 'react-bootstrap/Spinner';
+
 let FederatedLogin = (props) => {
     return(
         <>
